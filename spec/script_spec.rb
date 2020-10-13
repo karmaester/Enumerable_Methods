@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-# rubocop:disable Metrics/BlockLength
-
 require '../script.rb'
 
 RSpec.describe Enumerable do
@@ -205,5 +201,3 @@ RSpec.describe Enumerable do
     end
   end
 end
-
-# rubocop:enable Metrics/BlockLength
