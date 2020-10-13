@@ -45,6 +45,16 @@ You should have Ruby installed to run this.
 - Twitter: [@twitterhandle](https://twitter.com/karmaendlich)
 - Linkedin: [linkedin](https://www.linkedin.com/in/khristian-rojas/)
 
+##  Rspec testing authors
+
+👤 **Eduardo Baeza**
+
+- GitHub: [@githubhandle](https://github.com/edxco/)
+- Twitter: [@twitterhandle](https://twitter.com/lalo_nbc/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/eduardo-n-baeza/)
+
+👤 **karmaester**
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
