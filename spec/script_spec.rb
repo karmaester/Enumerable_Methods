@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength, Layout/LineLength
+# rubocop:disable Metrics/BlockLength
 
 require '../script.rb'
 
@@ -206,4 +206,4 @@ RSpec.describe Enumerable do
   end
 end
 
-# rubocop:enable Metrics/BlockLength, Layout/LineLength
+# rubocop:enable Metrics/BlockLength
