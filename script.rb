@@ -173,3 +173,5 @@ end
 def multiply_els(arr)
   arr.my_inject(1, :*)
 end
+
+p [1, 2, 3].my_each
