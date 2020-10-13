@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/BlockLength, Layout/LineLength
 
 require '../script.rb'
 
@@ -152,17 +152,58 @@ RSpec.describe Enumerable do
     end
 
     it 'If block given returns the lenght of the array of values that meet condition' do
-     expect(ary.my_count {|x| x > 3}).to eql(2)
+      expect(ary.my_count { |x| x > 3 }).to eql(2)
     end
 
     it 'If block and range given returns the lenght of the array of values that meet condition' do
-     expect(range.my_count {|x| x > 3}).to eql(7)
+      expect(range.my_count { |x| x > 3 }).to eql(7)
     end
 
     it 'Returns 0 if the array is empty' do
       expect(arr4.my_count).to eql(0)
     end
   end
+
+  describe '#my_map' do
+    prc = proc { 'v' }
+    it 'when block not given returns Enumerator' do
+      expect(ary.my_map).to be_an Enumerator
+    end
+
+    it 'when block given returns new array with new values' do
+      expect(ary.my_map { |x| x + 1 }).to eql([2, 3, 4, 5, 6])
+    end
+
+    it 'when block and range given returns new array with new values' do
+      expect(range.my_map { 'v' }).to eql(%w[v v v v v v v v v v])
+    end
+
+    it 'when proc and range given returns new array with new values' do
+      expect(range.my_map(prc)).to eql(%w[v v v v v v v v v v])
+    end
+  end
+
+  describe '#my_inject' do
+    it 'when symbol passed as argument it performs the operation and returns the result' do
+      expect(range.my_inject(:+)).to eql(55)
+    end
+
+    it 'when block given it performs the operation and returns the result' do
+      expect(range.my_inject { |sum, n| sum + n }).to eql(55)
+    end
+
+    it 'when two arguments passed, first is initial value and second operator' do
+      expect(range.my_inject(1, :+)).to eql(56)
+    end
+
+    it 'when argument and block given, argument is initial value and block the operator' do
+      expect(range.my_inject(1) { |product, n| product + n }).to eql(56)
+    end
+
+    it 'find the longest word using a ternary as a block' do
+      expect(%w[cat sheep bear].my_inject { |memo, word| memo.length > word.length ? memo : word }).to eql('sheep')
+    end
+  end
 end
 
-# rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/BlockLength, Layout/LineLength
