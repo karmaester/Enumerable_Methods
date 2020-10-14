@@ -59,7 +59,7 @@ You should have Ruby installed to run this.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/GabrielJSuarez/Enumerable-methods/issues).
+Feel free to check the [issues page](https://github.com/GabrielJSuarez/Enumerable_Methods/issues).
 
 ## Show your support
 
