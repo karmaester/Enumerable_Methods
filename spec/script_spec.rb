@@ -1,4 +1,4 @@
-require '../script.rb'
+require_relative '../script.rb'
 
 RSpec.describe Enumerable do
   let(:ary) { [1, 2, 3, 4, 5] }
