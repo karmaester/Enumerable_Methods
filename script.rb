@@ -1,11 +1,10 @@
-# rubocop:disable all
-
-# frozen_string_literal: true
+# rubocop: disable Metrics/ModuleLength, Metrics/MethodLength, Style/RedundantParentheses, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
 
 module Enumerable
   def my_each
-    var = to_a 
+    var = to_a
     return to_enum(:my_each) unless block_given?
+
     index = 0
     while index < var.length
       yield(var[index])
@@ -42,9 +41,9 @@ module Enumerable
     if block_given?
       var.my_select { |x| yield(x) }.length == var.length
     elsif !pattern.nil?
-      if pattern.kind_of? Regexp
+      if pattern.is_a? Regexp
         var.my_select { |x| !pattern.match(x).nil? }.length == var.length
-      elsif pattern.kind_of? Numeric
+      elsif pattern.is_a? Numeric
         var.my_select { |x| pattern === x }.length == var.length
       else
         var.my_select { |x| pattern === x }.length == var.length
@@ -59,9 +58,9 @@ module Enumerable
     if block_given?
       var.my_select { |x| yield(x) }.length.positive? ? true : false
     elsif !pattern.nil?
-      if pattern.kind_of? Regexp
+      if pattern.is_a? Regexp
         var.my_select { |x| !pattern.match(x).nil? }.length.positive? ? true : false
-      elsif pattern.kind_of? Numeric
+      elsif pattern.is_a? Numeric
         var.my_select { |x| pattern === x }.length.positive? ? true : false
       else
         var.my_select { |x| pattern === x }.length.positive? ? true : false
@@ -134,33 +133,34 @@ module Enumerable
       count
     elsif args.length == 1 && args[0].class == Symbol
       count = 0
-      if args[0] == (:*) || args[0] == (:/)
-        count = 1
-      end
+      count = 1 if args[0] == (:*) || args[0] == (:/)
       operation = args[0]
       var.my_each do |x|
         count = count.send operation, x
       end
       count
     elsif args.length == 1 && args[0].class == Integer
-      raise LocalJumpError.new("no block given") unless block_given?
+      raise LocalJumpError, 'no block given' unless block_given?
+
       count = args[0]
       var.my_each do |x|
         count = yield(count, x)
       end
       count
     else
-      if !count.kind_of? String
-        raise LocalJumpError.new("no block given") unless block_given?
+      if !count.is_a? String
+        raise LocalJumpError, 'no block given' unless block_given?
+
         count = var[0]
-        varMod = var.dup
-        varMod.shift
-        varMod.my_each do |el|
+        var_mod = var.dup
+        var_mod.shift
+        var_mod.my_each do |el|
           count = yield(count, el)
         end
         count
       else
-        raise LocalJumpError.new("no block given") unless block_given?
+        raise LocalJumpError, 'no block given' unless block_given?
+
         var.my_each do |x|
           count = yield(count, x)
         end
@@ -173,3 +173,7 @@ end
 def multiply_els(arr)
   arr.my_inject(1, :*)
 end
+
+p [1, 2, 3].my_each
+
+# rubocop: enable Metrics/ModuleLength, Metrics/MethodLength, Style/RedundantParentheses, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
