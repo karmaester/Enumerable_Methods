@@ -1,4 +1,4 @@
-# rubocop:disable all
+# rubocop: disable Metrics/ModuleLength, Metrics/MethodLength, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
 
 module Enumerable
   def my_each
@@ -152,9 +152,9 @@ module Enumerable
         raise LocalJumpError, 'no block given' unless block_given?
 
         count = var[0]
-        varMod = var.dup
-        varMod.shift
-        varMod.my_each do |el|
+        var_mod = var.dup
+        var_mod.shift
+        var_mod.my_each do |el|
           count = yield(count, el)
         end
         count
@@ -176,4 +176,4 @@ end
 
 p [1, 2, 3].my_each
 
-# rubocop:enable all
+# rubocop: enable Metrics/ModuleLength, Metrics/MethodLength, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
