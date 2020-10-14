@@ -1,4 +1,4 @@
-# rubocop: disable Metrics/ModuleLength, Metrics/MethodLength, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
+# rubocop: disable Metrics/ModuleLength, Metrics/MethodLength, Style/RedundantParentheses, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
 
 module Enumerable
   def my_each
@@ -176,4 +176,4 @@ end
 
 p [1, 2, 3].my_each
 
-# rubocop: enable Metrics/ModuleLength, Metrics/MethodLength, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
+# rubocop: enable Metrics/ModuleLength, Metrics/MethodLength, Style/RedundantParentheses, Style/CaseEquality, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/IdenticalConditionalBranches, Style/IfInsideElse
